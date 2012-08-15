@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>TODO List</title>
+<!-- <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.min.js"></script> -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+	$(document).ready(function(){		
+		var url = "http://localhost:8080/nl.bandana.jersey.todo/rest/todos/";
+		var table = $('<table border=1/>').appendTo('#mainDiv');
+		
+		// Dynamically create table headers
+		$('<tr/>').appendTo(table)		
+		.append($('<td/>').text("Id"))
+            .append($('<td/>').text("Summary"))
+            .append($('<td/>').text("Description"));
+		
+		$.getJSON(url, function(json) {
+			$(json).each(function(index) {
+				jQuery.each(this.todo,function(index){  
+					
+					// Dynamically create table data
+					$('<tr/>').appendTo(table)
+                    .append($('<td/>').text(this.id))
+                    .append($('<td/>').text(this.summary))
+                    .append($('<td/>').text(this.description));
+				});
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="mainDiv">
+		<b>TODO List</b><br/>
+	</div>
+</body>
+</html>
