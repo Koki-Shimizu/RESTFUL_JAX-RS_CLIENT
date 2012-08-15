@@ -1,3 +1,5 @@
+An end to end example of restful web service in Java with Jersey(JAX-RS, JAX-B)
+
 This project is an extension of "http://www.vogella.com/articles/REST/article.html"
 for client side rendering of the todo list.
 
